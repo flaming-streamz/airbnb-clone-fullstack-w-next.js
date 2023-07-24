@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Container, Logo, Searchbar } from "@/components";
+import { Container, Logo, Searchbar, UserMenu } from "@/components";
 
 interface Props {}
 
@@ -16,6 +16,7 @@ const MainNavbar: React.FunctionComponent<Props> = ({}) => {
           >
             <Logo />
             <Searchbar />
+            <UserMenu />
           </div>
         </Container>
       </div>
