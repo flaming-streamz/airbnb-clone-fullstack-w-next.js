@@ -6,8 +6,8 @@ type Props = {};
 
 const MainNavbar = (props: Props) => {
   return (
-    <header>
-      <div className="div">{/* Container component */}</div>
+    <header className="">
+      <div className="">{/* Container component */}</div>
     </header>
   );
 };
