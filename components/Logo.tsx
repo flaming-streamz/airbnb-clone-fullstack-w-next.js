@@ -17,8 +17,7 @@ const Logo: React.FunctionComponent<Props> = ({}) => {
       alt="logo"
       width="100"
       height="100"
-      className="hidden cursor-pointer
-  md:block"
+      className="hidden cursor-pointer   md:block"
       onClick={handleClick}
     />
   );
