@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 
-import { ClientComponentOnly, MainNavbar, Modal, RegisterModal } from "@/components";
+import { ClientComponentOnly, MainNavbar, LoginModal, RegisterModal } from "@/components";
 import ToasterProvider from "@/providers/ToasterProvider";
 
 const font = Nunito({ subsets: ["latin"] });
@@ -19,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ClientComponentOnly>
           <ToasterProvider />
           <RegisterModal />
+          <LoginModal />
           <MainNavbar />
         </ClientComponentOnly>
         {children}

@@ -6,11 +6,13 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { Avatar } from "..";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/hooks/use-register-modal";
+import useLoginModal from "@/hooks/use-login-modal";
 
 interface Props {}
 
 const UserMenu: React.FunctionComponent<Props> = ({}) => {
   const registerModalState = useRegisterModal();
+  const loginModalState = useLoginModal();
   const [isOpen, setIsOpen] = React.useState(false);
 
   const toggleOpen = React.useCallback(() => {
@@ -42,10 +44,10 @@ const UserMenu: React.FunctionComponent<Props> = ({}) => {
       {isOpen && (
         <div
           className="absolute rounded-sm shadow-sm w-[40vw] md:w-3/4 
-      bg-white overflow-hidden right-0 top-12 text-sm"
+        bg-white overflow-hidden right-0 top-12 text-sm"
         >
           <React.Fragment>
-            <MenuItem label="Login" onClick={() => {}} />
+            <MenuItem label="Login" onClick={loginModalState.onOpen} />
             <MenuItem label="Sign up" onClick={registerModalState.onOpen} />
           </React.Fragment>
         </div>
