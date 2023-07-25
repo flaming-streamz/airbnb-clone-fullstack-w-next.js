@@ -30,13 +30,14 @@ const RegisterModal: React.FunctionComponent<Props> = ({}) => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    console.log(JSON.stringify(data, null, 4));
 
     // register endpoint
     axios
       .post("/api/register", data)
       .then((res) => {
-        // close register modal
+        console.log(JSON.stringify(res.data, null, 4));
+
+        // close register modal, after that
         registerModalState.onClose();
       })
       .catch((err) => {
