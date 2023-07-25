@@ -5,9 +5,10 @@ import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
 import useRegisterModal from "@/hooks/use-register-modal";
-import { Heading, Modal } from "..";
+import { Heading, Input, Modal } from "..";
 
 interface Props {}
 
@@ -20,7 +21,6 @@ const RegisterModal: React.FunctionComponent<Props> = ({}) => {
     handleSubmit,
     formState: { errors },
   } = useForm<FieldValues>({
-    delayError: 500,
     defaultValues: {
       name: "",
       email: "",
@@ -40,7 +40,7 @@ const RegisterModal: React.FunctionComponent<Props> = ({}) => {
         registerModalState.onClose();
       })
       .catch((err) => {
-        console.log("REGISTRATION MODAL ERROR ~", err);
+        toast.error("Something went wrong!");
       })
       .finally(() => {
         setIsLoading(false);
@@ -50,6 +50,17 @@ const RegisterModal: React.FunctionComponent<Props> = ({}) => {
   const RenderBodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title="Welcome to Airbnb" subtitle="Create an account" center />
+      <Input register={register} errors={errors} required id="email" label="Email" type="email" disabled={isLoading} />
+      <Input register={register} errors={errors} required id="name" label="Name" disabled={isLoading} />
+      <Input
+        register={register}
+        errors={errors}
+        required
+        id="password"
+        label="Password"
+        type="password"
+        disabled={isLoading}
+      />
     </div>
   );
 

@@ -99,7 +99,7 @@ const Modal: React.FunctionComponent<Props> = ({
                     <Button label={secondaryActionLabel} outline onClick={handleSecondaryAction} />
                   )}
 
-                  <Button label={actionLabel || "Continue"} onClick={(e) => {}} />
+                  <Button label={actionLabel || "Continue"} onClick={onSubmit} />
                 </div>
               </div>
             </div>

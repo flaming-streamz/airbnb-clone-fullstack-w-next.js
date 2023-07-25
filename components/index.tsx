@@ -11,3 +11,5 @@ export { default as RegisterModal } from "./modals/RegisterModal";
 export { default as MainNavbar } from "./navbar/MainNavbar";
 export { default as Searchbar } from "./navbar/Searchbar";
 export { default as UserMenu } from "./navbar/UserMenu";
+
+export { default as Input } from "./inputs/Input";
