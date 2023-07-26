@@ -4,6 +4,7 @@ import { Nunito } from "next/font/google";
 
 import { ClientComponentOnly, MainNavbar, LoginModal, RegisterModal } from "@/components";
 import ToasterProvider from "@/providers/ToasterProvider";
+import getCurrentUser from "@/actions/getCurrentUser";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -12,7 +13,9 @@ export const metadata: Metadata = {
   description: "Find your desired destination anywhere",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const currentUser = await getCurrentUser();
+
   return (
     <html lang="en">
       <body className={font.className}>
@@ -20,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ToasterProvider />
           <RegisterModal />
           <LoginModal />
-          <MainNavbar />
+          <MainNavbar currentUser={currentUser} />
         </ClientComponentOnly>
         {children}
       </body>

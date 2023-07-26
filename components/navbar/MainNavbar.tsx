@@ -2,10 +2,13 @@
 
 import React from "react";
 import { Container, Logo, Searchbar, UserMenu } from "@/components";
+import { SafeUser } from "@/interfaces";
 
-interface Props {}
+interface Props {
+  currentUser?: SafeUser | null;
+}
 
-const MainNavbar: React.FunctionComponent<Props> = ({}) => {
+const MainNavbar: React.FunctionComponent<Props> = ({ currentUser }) => {
   return (
     <header className="w-full fixed shadow-sm bg-white z-10">
       <div className="py-4 border-b-[1px]">
@@ -16,7 +19,7 @@ const MainNavbar: React.FunctionComponent<Props> = ({}) => {
           >
             <Logo />
             <Searchbar />
-            <UserMenu />
+            <UserMenu currentUser={currentUser} />
           </div>
         </Container>
       </div>

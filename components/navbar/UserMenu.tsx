@@ -2,15 +2,19 @@
 
 import React from "react";
 import { AiOutlineMenu } from "react-icons/ai";
+import { signOut } from "next-auth/react";
 
 import { Avatar } from "..";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/hooks/use-register-modal";
 import useLoginModal from "@/hooks/use-login-modal";
+import { SafeUser } from "@/interfaces";
 
-interface Props {}
+interface Props {
+  currentUser?: SafeUser | null;
+}
 
-const UserMenu: React.FunctionComponent<Props> = ({}) => {
+const UserMenu: React.FunctionComponent<Props> = ({ currentUser }) => {
   const registerModalState = useRegisterModal();
   const loginModalState = useLoginModal();
   const [isOpen, setIsOpen] = React.useState(false);
@@ -46,10 +50,21 @@ const UserMenu: React.FunctionComponent<Props> = ({}) => {
           className="absolute rounded-sm shadow-sm w-[40vw] md:w-3/4 
         bg-white overflow-hidden right-0 top-12 text-sm"
         >
-          <React.Fragment>
-            <MenuItem label="Login" onClick={loginModalState.onOpen} />
-            <MenuItem label="Sign up" onClick={registerModalState.onOpen} />
-          </React.Fragment>
+          {currentUser ? (
+            <React.Fragment>
+              <MenuItem label="My Trips" onClick={() => {}} />
+              <MenuItem label="My Favourites" onClick={() => {}} />
+              <MenuItem label="My Reservations" onClick={() => {}} />
+              <MenuItem label="My Properties" onClick={() => {}} />
+              <MenuItem label="Airbnb My Home" onClick={() => {}} />
+              <MenuItem label="Logout" onClick={signOut} />
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <MenuItem label="Login" onClick={loginModalState.onOpen} />
+              <MenuItem label="Sign up" onClick={registerModalState.onOpen} />
+            </React.Fragment>
+          )}
         </div>
       )}
     </div>
